@@ -1,0 +1,77 @@
+/* ======== Conteúdo Principal ======== */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* ======== Accordion ======== */
+.accordion-button {
+    background-color: #ffffff;
+    color: #343a40;
+    font-weight: 500;
+    border-radius: 12px; /* mais arredondado */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* sombra mais suave e moderna */
+    margin-bottom: 15px; /* um espacinho entre os itens */
+    padding: 15px 20px; /* aumenta a área interna */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #6f42c1;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* sombra mais intensa quando ativo */
+    transform: translateY(-2px); /* leve “pop” ao abrir */
+}
+
+.accordion-button:hover {
+    background-color: #5a36a3;
+    color: #ffffff;
+}
+
+.accordion-body {
+    background-color: #ffffff;
+    color: #495057;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 5px rgba(0,0,0,0.05);
+    padding: 20px; /* mais espaçamento interno */
+    margin-bottom: 15px; /* separação entre o botão e o conteúdo */
+}
+
+/* Links dentro do Accordion */
+.accordion-body a {
+    color: #6f42c1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.accordion-body a:hover {
+    text-decoration: underline;
+}
+
+/* Lista dentro do Accordion */
+.accordion-body ul {
+    padding-left: 25px;
+}
+
+.accordion-body li {
+    margin-bottom: 8px; /* mais espaçamento entre itens */
+}
+
+/* ======== Responsividade ======== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .accordion-button {
+        font-size: 0.95rem;
+        padding: 12px 15px;
+    }
+
+    .accordion-body {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+}

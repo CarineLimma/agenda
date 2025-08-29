@@ -1,0 +1,50 @@
+/* ======== Corpo da Página ======== */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* ======== Navbar ======== */
+.navbar {
+    background-color: #343a40;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ======== Container Principal ======== */
+.container-principal {
+    max-width: 1000px; /* antes era 600px, agora está mais largo */
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* ======== Títulos ======== */
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ======== Botão Padrão ======== */
+.btn-custom {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}

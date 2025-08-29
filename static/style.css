@@ -1,0 +1,122 @@
+/* ======== Estilo Geral ======== */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* ======== Navbar ======== */
+.navbar {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+}
+
+.navbar-nav .nav-link.active {
+    color: #ffc107 !important; /* destaque página ativa */
+}
+
+/* ======== Container ======== */
+.container {
+    max-width: 900px;
+    margin-top: 30px;
+}
+
+/* ======== Cards ======== */
+.card {
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+/* ======== Formulário ======== */
+form label {
+    font-weight: 500;
+    color: #333333;
+}
+
+.form-control, .form-select, textarea {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 5px rgba(111,66,193,0.3);
+    outline: none;
+}
+
+/* ======== Botões ======== */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: #6f42c1;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #5a36a3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* ======== Tabelas (lista_agendamento) ======== */
+.table {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.table th {
+    background-color: #6f42c1;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.table td, .table th {
+    padding: 12px 15px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+/* ======== Responsividade ======== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
