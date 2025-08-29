@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
-        events: '/eventos', // rota Flask que retorna JSON dos agendamentos
+        events: '/get_events', // rota Flask que retorna JSON dos agendamentos
         editable: false,
         selectable: true,
         select: function(info) {
@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const modal = new bootstrap.Modal(document.getElementById('modal-agendamento'));
             document.querySelector('#agendamento-data').value = info.startStr;
             modal.show();
+        },
+        eventClick: function(info) {
+            alert('Evento: ' + info.event.title + '\nData: ' + info.event.start.toLocaleString());
         }
     });
 
@@ -26,47 +29,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ======== Adicionar Agendamento ========
     const formAgendamento = document.getElementById('form-agendamento');
-    formAgendamento.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const formData = new FormData(formAgendamento);
-        const response = await fetch('/adicionar_agendamento', {
-            method: 'POST',
-            body: formData
+    if(formAgendamento){
+        formAgendamento.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(formAgendamento);
+            const response = await fetch('/adicionar_agendamento', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            if(result.success){
+                alert('Agendamento adicionado com sucesso!');
+                calendar.refetchEvents(); // atualiza o calendário
+                formAgendamento.reset();
+                bootstrap.Modal.getInstance(document.getElementById('modal-agendamento')).hide();
+            } else {
+                alert('Erro: ' + result.error);
+            }
         });
-        const result = await response.json();
-        if(result.success){
-            alert('Agendamento adicionado com sucesso!');
-            calendar.refetchEvents(); // atualiza o calendário
-            formAgendamento.reset();
-            bootstrap.Modal.getInstance(document.getElementById('modal-agendamento')).hide();
-        } else {
-            alert('Erro: ' + result.error);
-        }
-    });
+    }
 
     // ======== Adicionar Cliente Dinâmico ========
     const formCliente = document.getElementById('form-cliente');
-    formCliente.addEventListener('submit', async function(e){
-        e.preventDefault();
-        const formData = new FormData(formCliente);
-        const response = await fetch('/adicionar_cliente', {
-            method: 'POST',
-            body: formData
+    if(formCliente){
+        formCliente.addEventListener('submit', async function(e){
+            e.preventDefault();
+            const formData = new FormData(formCliente);
+            const response = await fetch('/adicionar_cliente', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            if(result.success){
+                alert('Cliente adicionado com sucesso!');
+                formCliente.reset();
+                // Atualiza dropdown de clientes no modal de agendamento
+                updateClienteDropdown(result.clientes);
+            } else {
+                alert('Erro: ' + result.error);
+            }
         });
-        const result = await response.json();
-        if(result.success){
-            alert('Cliente adicionado com sucesso!');
-            formCliente.reset();
-            // Opcional: atualizar dropdown de clientes no modal de agendamento
-            updateClienteDropdown(result.clientes);
-        } else {
-            alert('Erro: ' + result.error);
-        }
-    });
+    }
 
     // ======== Função para atualizar dropdown de clientes ========
     function updateClienteDropdown(clientes){
         const select = document.getElementById('agendamento-cliente');
+        if(!select) return;
         select.innerHTML = ''; // limpa opções
         clientes.forEach(c => {
             const option = document.createElement('option');
